@@ -107,7 +107,7 @@ You can choose to redefine the `__init__` method if you need to use a different 
 
 ## Available datasets
 
-Several datasets can co-exists. Each being represented by the $NAME.py script in the `commondata/`. Currently the following dataset are available
+This repository supports multiple datasets, each represented by the $NAME dataset directory in the `data/` directory, and a corresponding $NAME.py script in the `commondata/` directory. Currently the following dataset are available:
 
-* `softwaresearchterms`: A list of terms that are contained in text and are associated to software development. Source: internal
-* `ukunilist`: A list of universities in United-Kingdom. Source: wikipedia and some manual cleaning
+* `softwaresearchterms`: A list of terms that are contained in text and are associated with software development. Source: internal
+* `ukunilist`: A list of universities in the United Kingdom. Source: wikipedia and some manual cleaning
