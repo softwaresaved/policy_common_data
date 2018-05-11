@@ -68,7 +68,7 @@ search_terms = SoftwareSearchTerms(dataset=<dataset_file>)
 Note: if the `policy_common_data` submodule repository is updated and you need to update your own copy of it within your own repository to match, do the following within your repository's root directory:
 
 ```
-git submodule update --init --recursive
+git submodule update --remote
 ```
 
 ## Adding a new dataset
