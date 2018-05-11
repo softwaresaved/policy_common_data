@@ -20,19 +20,37 @@ The datasets and Python class wrappers are included within the following directo
 * `commondata/`: the Python package containing separate modules for acccessing each dataset, e.g. `commondata/softwaresearchterms.py` contains a Python wrapper class for accessing the SoftwareSearchTerms dataset.
 
 
-## Accessing data from a dataset
-
-### Accessing the raw data
+## Accessing the raw data
 
 The raw data files for a given dataset can be simply accessed directly from `data/<dataset>/<datafile>`.
 
-### Accessing the data via a Python wrapper class
 
-To access a supplied dataset from within Python, do the following, e.g. for SoftwareSearchTerms:
+### Accessing the data via a Python wrapper class in your own project
+
+First add the `policy_common_data` repository as a submodule in a suitable directory of your own repository, e.g.:
 
 ```
-from commondata.softwaresearchterms import SoftwareSearchTerms
+$ cd your_repo_dir
+your_repo_dir $ mkdir lib
+your_repo_dir $ cd lib
+your_repo_dir $ git submodule add -b master https://github.com/softwaresaved/policy_common_data.git
+```
 
+Which will create a `policy_common_data` submodule within `lib/` and clone its contents at this location.
+
+Then access a supplied dataset from within your own Python script (assuming it's located at the top level of your repository), do the following, e.g. for SoftwareSearchTerms:
+
+```
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "lib", "policy_common_data"))
+from commondata.softwaresearchterms import SoftwareSearchTerms
+```
+
+This adds the `lib\policy_common_data` submodule onto Python's path and imports it. Then you can do, e.g.:
+
+```
 search_terms = SoftwareSearchTerms()
 print(search_terms.data)
 ```
@@ -47,14 +65,21 @@ This will supply the default data file as a list. To access another data file wi
 search_terms = SoftwareSearchTerms(dataset=<dataset_file>)
 ```
 
+Note: if the `policy_common_data` submodule repository is updated and you need to update your own copy of it within your own repository to match, do the following within your repository's root directory:
+
+```
+git submodule update --init --recursive
+```
 
 ## Adding a new dataset
 
 Adding a new dataset is done in two steps.
 
+
 ### Add the dataset raw data
 
 Create a new directory within the `data/` directory which reflects the name of the dataset, and populate the directory with each dataset file. If you wish to use the default data file loader which supplies the data file as a list, the files must be in the form of a text file with one entry per line, and one file must be named `default.txt` - the file that will be supplied if no argument is given to the constructor.
+
 
 ### Create a Python class wrapper
 
