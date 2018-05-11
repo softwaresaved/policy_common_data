@@ -41,7 +41,7 @@ print(search_terms.data)
 ['algorithm', 'big data', 'beautifulsoup', 'computation', 'computational', 'computed', 'computer', 'computing', 'data analysis', 'data base', 'database', 'microsoft excel', 'ms excel', 'fortran', 'geographic information science', 'geographic information systems', 'gis', 'git', 'github', 'graphics', 'high performance computing', 'hpc', 'imagej', 'in silico', 'matlab', 'matplotlib', 'modeling', 'modelling', 'numpy', 'nvivo', 'open source', 'open-source', 'programming language', 'python', 'quantitative analysis', 'r language', 'scrapy', 'scipy', 'simulated', 'simulation', 'software', 'spss', 'sqlalchemy', 'stata', 'statistical', 'supercomputer', 'supercomputing', 'visualisation', 'visualization', 'Rcpp', 'ggplot2', 'plyr', 'stringr', 'reshape2', 'RColorBrewer', 'workflow', 'wxpython']
 ```
 
-This will supply the default data file. To access another data file within that dataset, use instead:
+This will supply the default data file as a list. To access another data file within that dataset, use instead:
 
 ```
 search_terms = SoftwareSearchTerms(dataset=<dataset_file>)
@@ -54,7 +54,7 @@ Adding a new dataset is done in two steps.
 
 ### Add the dataset raw data
 
-Create a new directory within the `data/` directory which reflects the name of the dataset, and populate the directory with each dataset file. If you wish to use the default data file loader, the files must be in the form of a text file with one entry per line, and one file should be named `default.txt` - the file that will be supplied if no argument is given to the contructor.
+Create a new directory within the `data/` directory which reflects the name of the dataset, and populate the directory with each dataset file. If you wish to use the default data file loader which supplies the data file as a list, the files must be in the form of a text file with one entry per line, and one file must be named `default.txt` - the file that will be supplied if no argument is given to the constructor.
 
 ### Create a Python class wrapper
 
@@ -72,3 +72,4 @@ class SomeData(DataRetrievalBase):
         super(self.__class__, self).__init__(*args, **kwargs)
 ```
 
+You can choose to redefine the `__init__` method if you need to use a different way of accessing a dataset's data beyond the default behaviour (defined in [Add the dataset raw data](#Add-the-dataset-raw-data)) above.
