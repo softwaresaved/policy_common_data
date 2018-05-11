@@ -98,3 +98,11 @@ class SomeData(DataRetrievalBase):
 ```
 
 You can choose to redefine the `__init__` method if you need to use a different way of accessing a dataset's data beyond the default behaviour (defined in [Add the dataset raw data](#Add-the-dataset-raw-data)) above.
+
+
+## Available datasets
+
+Several datasets can co-exists. Each being represented by the $NAME.py script in the `commondata/`. Currently the following dataset are available
+
+* `softwaresearchterms`: A list of terms that are contained in text and are associated to software development. Source: internal
+* `ukunilist`: A list of universities in United-Kingdom. Source: wikipedia and some manual cleaning
