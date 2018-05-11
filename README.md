@@ -25,7 +25,7 @@ The datasets and Python class wrappers are included within the following directo
 The raw data files for a given dataset can be simply accessed directly from `data/<dataset>/<datafile>`.
 
 
-### Accessing the data via a Python wrapper class in your own project
+### Configuring the Python wrapper in your own project
 
 First add the `policy_common_data` repository as a submodule in a suitable directory of your own repository, e.g.:
 
@@ -48,7 +48,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "lib", "policy_common
 from commondata.softwaresearchterms import SoftwareSearchTerms
 ```
 
-This adds the `lib\policy_common_data` submodule onto Python's path and imports it. Then you can do, e.g.:
+This adds the `lib\policy_common_data` submodule onto Python's path and imports it.
+
+
+### Using the Python wrapper in your own project
+
+Once configured, you can then do, e.g.:
 
 ```
 search_terms = SoftwareSearchTerms()
